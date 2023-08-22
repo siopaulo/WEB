@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hrací plocha</title>
+    <style>
+        /* Zde můžete vložit CSS pro stylování hrací plochy */
+        #board {
+            width: 500px;
+            height: 500px;
+            border: 2px solid black;
+            margin-left:  32%;
+        }
+
+        .square {
+            width: 62.5px;
+            height: 62.5px;
+            float: left;
+        }
+
+        .black {
+            background-color: black;
+        }
+
+        .white {
+            background-color: white;
+        }
+
+        .ball {
+        width: 31.25px;
+        height: 31.25px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, red, yellow);
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .selected {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Zde vytvoříme element pro hrací plochu -->
+<div id="board"></div>
+
+<script>
+    var bombs = [];
+    // Zde vytvoříme funkci pro vykreslení šachovnice
+    function createChessBoard() {
+        var board = document.getElementById("board");
+
+        // Vytvoříme 8x8 políček šachovnice
+        for (var i = 0; i < 8; i++) {
+            for (var j = 0; j < 8; j++) {
+                var square = document.createElement("div");
+                square.classList.add("square");
+                var randomNumber = Math.floor(Math.random() * 8);
+
+                    // Vložení bomby do hrací plochy
+                    if (randomNumber === 3) {
+                        bombs.push(square);
+                    }
+
+                // Barva políčka závisí na pozici
+                if ((i + j) % 2 == 0) {
+                    square.classList.add("white");
+                } else {
+                    square.classList.add("black");
+                }
+                board.appendChild(square);
+
+                if (i == 0 && j == 0) {
+                    var ball = document.createElement("div");
+                    ball.classList.add("ball");
+                    ball.style.top = "24.5px";
+                    ball.style.left = "24.5px";
+                    square.appendChild(ball);
+                }
+
+                square.addEventListener("click", function() {
+                // Zjištění, zda kliknuté políčko je bomba
+                if (bombs.indexOf(this) !== -1) {
+                    // Změna barvy obrazovky
+                    document.body.style.backgroundColor = "red";
+                }
+            });
+
+                square.addEventListener("click", function() {
+                    // Zjistíme pozici políčka
+                    var x = this.offsetLeft;
+                    var y = this.offsetTop;
+                    var k = 15;
+                    
+
+                    // Nastavíme pozici kuličky
+                    ball.style.top = y + k + "px";
+                    ball.style.left = x + k +"px";
+                });
+            }
+        }
+    }
+    createChessBoard()  
+</script>
+</body>
+</html>

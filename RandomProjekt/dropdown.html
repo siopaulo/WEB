@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #dropdown {
+        display: none;
+        /* height: 0; */
+        overflow: hidden;
+        /* transition: height 0.5s ease-out; */
+        animation: slideDown 0.5s ease-out;
+      }
+      .show {
+        display: block;
+      }
+      #dropdown.show {
+        display: block;
+        width: 200px;
+      }
+      /*transition*/
+      /*
+      @keyframes slideDown {
+        from { height: 0; }
+        to { height: 200px; } 
+      }
+      */
+      
+      /*keyframes */
+      @keyframes slideDown {
+        from { transform: translateY(-100%); }
+        to { transform: translateY(0); }
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="dropdownAnimation()">Toggle Dropdown</button>
+    <nav id="dropdown">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <script>
+      function dropdownAnimation() {
+        var dropdown = document.getElementById("dropdown");
+        if (dropdown.classList.contains("show")) {
+          dropdown.classList.remove("show");
+        } else {
+          dropdown.classList.add("show");
+        }
+      }
+    </script>
+  </body>
+</html>

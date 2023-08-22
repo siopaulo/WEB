@@ -1,0 +1,102 @@
+footer {
+    background-color: #191919;
+    padding: 2em 0;
+    color: var(--white);
+    margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    width: calc(33.33% - 20px);
+    margin-bottom: 1.5em;
+    padding-left: 15px; /* Left padding for consistency */
+    padding-right: 15px; /* Right padding for consistency */
+}
+
+.footer-section h4 {
+    border-bottom: 2px solid var(--white);
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5em;
+}
+
+.footer-section ul li a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: var(--red);
+}
+
+.footer-bottom {
+    text-align: center;
+    width: 100%;
+}
+
+.social-links {
+    display: flex;
+    justify-content: space-around;
+    gap: 0em;
+    margin-top:-1em;
+}
+
+.social-links a {
+    font-size: 1.8em;
+    color: var(--white);
+    margin: 0 15px;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    color: var(--red);
+}
+
+@media screen and (max-width: 750px) {
+    .footer-section {
+        width: 50%;
+        padding-left: 15px; /* Padding on smaller screens */
+        padding-right: 15px; /* Padding on smaller screens */
+    }
+    
+    .social-links {
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        gap: 0.5em;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .footer-section {
+        width: 100%;
+        padding-left: 15px; /* Padding on even smaller screens */
+        padding-right: 15px; /* Padding on even smaller screens */
+    }
+
+    .social-links{
+        gap: 5em;
+    }
+}
